@@ -1,0 +1,9 @@
+body {
+    background-color: darkgreen;
+}
+
+.pianoTable {
+    background-color: black;
+    width: 80vw;
+    height: 40vh;
+}
