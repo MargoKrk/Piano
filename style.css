@@ -10,4 +10,12 @@ body {
     background-color: black;
     width: 80vw;
     height: 40vw;
+    display: flex;
+    align-items: flex-end;
+}
+
+.key {
+    background-color: white;
+    width: 2vw;
+    height: 8vw;
 }
