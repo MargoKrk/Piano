@@ -2,28 +2,38 @@ function addPianoKey() {
 
     const newDiv = document.createElement("div");
     newDiv.classList.add("key");
-    const pianoTableElement = document.querySelector(".pianoTable"); //robimy sobie odnośnik do pianoTable
-    pianoTableElement.appendChild(newDiv); //dodanie elementu do pianoTable
+    const whiteKeysLayerElement = document.querySelector(".whiteKeysLayer"); //robimy sobie odnośnik do pianoTable
+    whiteKeysLayerElement.appendChild(newDiv); //dodanie elementu do pianoTable
 
 }
 
-let i=0;
-const numberOfKeys=4
-while (i<numberOfKeys) {
-    addPianoKey();
-    i++;
+function allWhiteKeys() {
+    let i = 0;
+    const numberOfKeys = 19
+    while (i < numberOfKeys) {
+        addPianoKey();
+        i++;
+    }
 }
 
+allWhiteKeys()
 
 function addBlackKey () {
 
     const blackDiv = document.createElement("div");
     blackDiv.classList.add("blackKey");
-    const pianoTableElement = document.querySelector(".pianoTable"); //robimy sobie odnośnik do pianoTable
-    pianoTableElement.appendChild(blackDiv);
+    const blackKeysLayerElement = document.querySelector(".blackKeysLayer"); //robimy sobie odnośnik do pianoTable
+    blackKeysLayerElement.appendChild(blackDiv);
 }
 
-addBlackKey()
+function allBlackKeys() {
+    let j = 0;
+    const numberOfKeys = 18
+    while (j < numberOfKeys) {
+        addBlackKey();
+        j++;
+    }
+}
 
-console.log(addBlackKey)
+allBlackKeys()
 
