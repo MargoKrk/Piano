@@ -5,13 +5,25 @@ function addPianoKey() {
     const pianoTableElement = document.querySelector(".pianoTable"); //robimy sobie odnośnik do pianoTable
     pianoTableElement.appendChild(newDiv); //dodanie elementu do pianoTable
 
-    console.log("ass");
+}
+
+let i=0;
+const numberOfKeys=4
+while (i<numberOfKeys) {
+    addPianoKey();
+    i++;
 }
 
 
+function addBlackKey () {
 
-addPianoKey()
-addPianoKey()
-addPianoKey()
-addPianoKey()
+    const blackDiv = document.createElement("div");
+    blackDiv.classList.add("blackKey");
+    const pianoTableElement = document.querySelector(".pianoTable"); //robimy sobie odnośnik do pianoTable
+    pianoTableElement.appendChild(blackDiv);
+}
+
+addBlackKey()
+
+console.log(addBlackKey)
 

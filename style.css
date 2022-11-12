@@ -15,8 +15,19 @@ body {
 }
 
 .key {
+    position: relative;
     background-color: white;
     width: 2vw;
     height: 8vw;
     border: 1px solid black;
+}
+
+.blackKey {
+    position: absolute;
+    background-color: deeppink;
+    width: 1vw;
+    height: 5vw;
+    margin-bottom: 3vw;
+    margin-left: 1.5vw;
+    z-index: 1;
 }
