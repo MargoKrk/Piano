@@ -12,6 +12,7 @@ body {
     height: 40vw;
     display: flex;
     align-items: flex-end;
+    justify-content: center;
 }
 
 .blackKeysLayer {

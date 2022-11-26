@@ -23,8 +23,8 @@ function allBlackKeys(numberOfKeys) {
     }
 }
 
-allWhiteKeys(19)
-allBlackKeys(18)
+allWhiteKeys(21)
+allBlackKeys(21)
 
 function addBlackKey () {
 
