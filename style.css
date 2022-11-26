@@ -17,7 +17,7 @@ body {
 .blackKeysLayer {
     display: flex;
     position: absolute;
-    padding-left: 0.75vw;
+    padding-left: 0.7vw;
 }
 
 .whiteKeysLayer {
@@ -33,10 +33,20 @@ body {
 }
 
 .blackKey {
-    background-color: deeppink;
+    background-color: black;
     width: 1vw;
     height: 5vw;
     margin-bottom: 3vw;
     margin-left: 1vw;
     border: 1px solid black;
 }
+.blackKey:nth-of-type(7n) {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.blackKey:nth-child(7n+3) {
+    background-color: transparent;
+    border-color: transparent;
+}
+
