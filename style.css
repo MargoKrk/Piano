@@ -18,27 +18,29 @@ body {
 .blackKeysLayer {
     display: flex;
     position: absolute;
-    padding-left: 0.7vw;
+    padding-left: 0.7vw; /* na 1.3vw*/
+    transform: scale(1.6); /* bez tego*/
 }
 
 .whiteKeysLayer {
     display: flex;
+    transform: scale(1.6); /* bez tego */
 }
 
 .key {
     position: relative;
     background-color: white;
-    width: 2vw;
-    height: 8vw;
+    width: 2vw; /* na 3vw*/
+    height: 8vw; /* na 12vw*/
     border: 1px solid black;
 }
 
 .blackKey {
     background-color: black;
-    width: 1vw;
-    height: 5vw;
-    margin-bottom: 3vw;
-    margin-left: 1vw;
+    width: 1vw; /* na 1.3vw*/
+    height: 5vw; /* na 6vw*/
+    margin-bottom: 3vw; /* na 6vw*/
+    margin-left: 1vw; /* na 1.7vw*/
     border: 1px solid black;
 }
 .blackKey:nth-of-type(7n) {
