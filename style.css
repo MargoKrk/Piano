@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     background-color: darkgreen;
     height: 100vh;
@@ -18,30 +22,35 @@ body {
 .blackKeysLayer {
     display: flex;
     position: absolute;
-    padding-left: 0.7vw; /* na 1.3vw*/
-    transform: scale(1.6); /* bez tego*/
+    padding-left: 0.9vw;
+    transform: scale(1.7);
+    transform-origin: bottom;
+    pointer-events: none;
 }
 
 .whiteKeysLayer {
     display: flex;
-    transform: scale(1.6); /* bez tego */
+    transform: scale(1.7);
+    transform-origin: bottom;
+
 }
 
 .key {
     position: relative;
     background-color: white;
-    width: 2vw; /* na 3vw*/
-    height: 8vw; /* na 12vw*/
+    width: 2vw;
+    height: 8vw;
     border: 1px solid black;
 }
 
 .blackKey {
     background-color: black;
-    width: 1vw; /* na 1.3vw*/
-    height: 5vw; /* na 6vw*/
-    margin-bottom: 3vw; /* na 6vw*/
-    margin-left: 1vw; /* na 1.7vw*/
+    width: 1vw;
+    height: 5vw;
+    margin-bottom: 3vw;
+    margin-left: 1vw;
     border: 1px solid black;
+    pointer-events: all;
 }
 .blackKey:nth-of-type(7n) {
     background-color: transparent;
@@ -52,4 +61,24 @@ body {
     background-color: transparent;
     border-color: transparent;
 }
+
+.key:hover {
+    background-color: lightgray;
+}
+
+.blackKey:hover {
+    background-color: rgb(30, 30, 30);
+}
+
+
+.blackKey:nth-of-type(7n):hover {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.blackKey:nth-child(7n+3):hover {
+    background-color: transparent;
+    border-color: transparent;
+}
+
 
