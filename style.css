@@ -55,11 +55,13 @@ body {
 .blackKey:nth-of-type(7n) {
     background-color: transparent;
     border-color: transparent;
+    pointer-events: none;
 }
 
 .blackKey:nth-child(7n+3) {
     background-color: transparent;
     border-color: transparent;
+    pointer-events: none;
 }
 
 .key:hover {
