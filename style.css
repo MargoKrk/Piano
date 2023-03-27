@@ -26,13 +26,18 @@ body {
     transform: scale(1.7);
     transform-origin: bottom;
     pointer-events: none;
+    color: white;
+    font-size: 5px;
+    text-align: center;
 }
 
 .whiteKeysLayer {
     display: flex;
     transform: scale(1.7);
     transform-origin: bottom;
-
+    color: black;
+    font-size: 8px;
+    text-align: center;
 }
 
 .whiteKey {
