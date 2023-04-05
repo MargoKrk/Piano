@@ -61,12 +61,14 @@ body {
     background-color: transparent;
     border-color: transparent;
     pointer-events: none;
+    color: transparent;
 }
 
 .blackKey:nth-child(7n+3) {
     background-color: transparent;
     border-color: transparent;
     pointer-events: none;
+    color: transparent;
 }
 
 .whiteKey:hover {
