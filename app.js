@@ -6,7 +6,7 @@ function addPianoKey(i) {
 
     newDiv.addEventListener("click", function () {
         handleClick("white", i);
-        addSound()
+        addSound( "white")
     }); // nadanie funkcji po kliknięciu przycisku, robimy to w funkcji aby móc nadać argumenty
     const whiteKeysLayerElement = document.querySelector(".whiteKeysLayer"); //robimy sobie odnośnik do pianoTable
     whiteKeysLayerElement.appendChild(newDiv); //dodanie elementu do pianoTable
@@ -37,7 +37,7 @@ function addBlackKey(i) {
     blackDiv.classList.add("blackKey");
     blackDiv.addEventListener("click", function () {
         handleClick("black", i);
-        addSound()
+        // addSound()
     });
 
     const blackKeysLayerElement = document.querySelector(".blackKeysLayer"); //robimy sobie odnośnik do pianoTable
@@ -50,9 +50,12 @@ function handleClick(color, i) {
     console.log("zostałem dotknięty " + (i + 1), color)
 }
 
-function addSound () {
+function addSound (color) {
 
-    let audio = new Audio("./sound/white/1. C3.mp3");
+    const sound = i.id;
+    // let audio = new Audio('./sound/white/A3.mp3')
+
+    let audio = new Audio(`./sound/${color}/${sound}.mp3`);
 
         return audio.play()
 }
@@ -65,24 +68,24 @@ function addNoteNameToWhiteKeys() {
     allWhiteKeys.forEach((whiteKey, i) => {
 
         whiteKey.innerHTML = noteNames[i];
-        whiteKey.classList.add(noteNames[i])
+        whiteKey.id = noteNames[i];
     })
 }
 
-function addNoteNameToBlackKeys() {
-
-    const noteNames = ["C#3", "D#3", "", "F#3", "G#3", "A#3", " ", "C#4", "D#4", " ", "F#4", "G#4", "A#4", " ", "C#5", "D#5", " ", "F#5", "G#5", "A#5", " ",];
-    const allBlackKeys = document.querySelectorAll(".blackKey");
-
-    allBlackKeys.forEach((blackKey, i) => {
-
-        blackKey.innerHTML = noteNames[i];
-        blackKey.classList.add(noteNames[i])
-    })
-}
+// function addNoteNameToBlackKeys() {
+//
+//     const noteNames = ["C#3", "D#3", "none", "F#3", "G#3", "A#3", " ", "C#4", "D#4", " ", "F#4", "G#4", "A#4", " ", "C#5", "D#5", " ", "F#5", "G#5", "A#5", " ",];
+//     const allBlackKeys = document.querySelectorAll(".blackKey");
+//
+//     allBlackKeys.forEach((blackKey, i) => {
+//
+//         blackKey.innerHTML = noteNames[i];
+//         blackKey.classList.add(noteNames[i])
+//     })
+// }
 
 
 addNoteNameToWhiteKeys();
-addNoteNameToBlackKeys();
+// addNoteNameToBlackKeys();
 
 
