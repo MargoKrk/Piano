@@ -9,12 +9,3 @@ body {
   justify-content: center;
   align-items: center;
 }
-
-.pianoTable {
-  background-color: black;
-  width: 80vw;
-  height: 40vw;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-}
