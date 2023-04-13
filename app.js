@@ -7,7 +7,7 @@ function addPianoKey(i) {
     newDiv.addEventListener("click",  (e) => {
         handleClick("white", i, e);
         console.log(e.target.id)
-    });; // nadanie funkcji po kliknięciu przycisku, robimy to w funkcji aby móc nadać argumenty
+    }); // nadanie funkcji po kliknięciu przycisku, robimy to w funkcji aby móc nadać argumenty
     const whiteKeysLayerElement = document.querySelector(".whiteKeysLayer"); //robimy sobie odnośnik do pianoTable
     whiteKeysLayerElement.appendChild(newDiv); //dodanie elementu do pianoTable
 }
