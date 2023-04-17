@@ -53,8 +53,6 @@ function handleClick(color, i) {
 
 function playSound (color, i) {
 
-    // let audio = new Audio('./sound/white/A3.mp3')
-
     const noteToPlay = noteNames[color][i];
     const stringToFile = `./sound/${color}/${noteToPlay}.mp3`;
     console.log(stringToFile);
@@ -65,7 +63,7 @@ function playSound (color, i) {
 }
 
 const whiteNoteNames = ["C3", "D3", "E3", "F3", "G3", "A3", "B3", "C4", "D4", "E4", "F4", "G4", "A4", "B4", "C5", "D5", "E5", "F5", "G5", "A5", "B5"];
-const blackNoteNames = ["C#3", "D#3", "none1", "F#3", "G#3", "A#3", "none2", "C#4", "D#4", "none3", "F#4", "G#4", "A#4", "none4", "C#5", "D#5", "none5", "F#5", "G#5", "A#5"];
+const blackNoteNames = ["C_3", "D_3", "none1", "F_3", "G_3", "A_3", "none2", "C_4", "D_4", "none3", "F_4", "G_4", "A_4", "none4", "C_5", "D_5", "none5", "F_5", "G_5", "A_5"];
 const noteNames = {white: whiteNoteNames, black: blackNoteNames}
 
 function addNoteNameToWhiteKeys() {
