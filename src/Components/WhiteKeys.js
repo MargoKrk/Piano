@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {handleClick, WHITE_NOTES_NAMES, playSound, attachKeyDownHandler} from "./general";
+import {handlePianoKey, WHITE_NOTES_NAMES } from "./general";
 
 const WhiteKeys = () => {
 
@@ -10,9 +10,7 @@ const WhiteKeys = () => {
             return (
                 <div className="whiteKey"
                      key={key}
-                onClick={() => handleClick("white", indx)}
-                onClick={() => playSound("white", indx)}
-                     onKeyDown={() => attachKeyDownHandler()}
+                onClick={() => handlePianoKey("white", indx)}
                 >
                     {key}</div>
             )}
