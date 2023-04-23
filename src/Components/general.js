@@ -1,10 +1,9 @@
-export const WHITE_NOTES_NAMES = ["C3", "D3", "E3", "F3", "G3", "A3", "B3", "C4", "D4", "E4", "F4", "G4", "A4", "B4", "C5", "D5", "E5", "F5", "G5", "A5", "B5"];
-export const BLACK_NOTES_NAMES = ["cis3", "dis3", "none1", "fis3", "gis3", "ais3", "none2", "cis4", "dis4", "none3", "fis4", "gis4", "ais4", "none4", "cis5", "dis5", "none5", "fis5", "gis5", "ais5"];
-export const NOTES = [{
-    sound: "C3",
-    key: "a",
-    type: "white"
-},
+export const NOTES = [
+    {
+        sound: "C3",
+        key: "a",
+        type: "white"
+    },
     {
         sound: "cis3",
         key: "q",
@@ -26,7 +25,9 @@ export const NOTES = [{
         type: "white",
     },
     {
-        key: "none",
+        sound: "none",
+        key: "none1",
+        type: "black"
     },
     {
         sound: "F3",
@@ -64,7 +65,9 @@ export const NOTES = [{
         type: "white",
     },
     {
-        key: "none",
+        sound: "none",
+        key: "none2",
+        type: "black"
     },
     {
         sound: "C4",
@@ -92,7 +95,9 @@ export const NOTES = [{
         type: "white",
     },
     {
-        key: "none",
+        sound: "none",
+        key: "none3",
+        type: "black"
     },
     {
         sound: "F4",
@@ -130,7 +135,9 @@ export const NOTES = [{
         type: "white",
     },
     {
-        key: "none",
+        sound: "none",
+        key: "none4",
+        type: "black"
     },
     {
         sound: "C5",
@@ -158,7 +165,9 @@ export const NOTES = [{
         type: "white",
     },
     {
-        key: "none",
+        sound: "none",
+        key: "none5",
+        type: "black"
     },
     {
         sound: "F5",
@@ -271,13 +280,5 @@ export const handlePianoKey = (indx) => {
     const noteToPlay = noteNames[indx];
     playSound(noteToPlay)
 }
-
-
-// export const handlePianoClick = (indx) => {
-//
-//     console.log("zostałem kliknięty " + (indx));
-//
-//     playSound(indx)
-// }
 
 

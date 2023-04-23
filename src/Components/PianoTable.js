@@ -3,7 +3,7 @@ import WhiteKeys from "./WhiteKeys"
 import BlackKeys from "./BlackKeys"
 import Navigation from "./Navigation"
 import './PianoTable.css';
-import {handlePianoKey, noteNames, WHITE_NOTES_NAMES } from "./general";
+import {handlePianoKey, noteNames, NOTES} from "./general";
 
 
 function PianoTable() {
@@ -11,7 +11,7 @@ const [signature, setSignature] = useState([]);
 
     const selectSignature = (type) => {
         if (type === 'C') {
-            setSignature([...WHITE_NOTES_NAMES])
+            setSignature([...NOTES])
         }
         if(type === 'Keys') {
             setSignature(Object.keys(noteNames))

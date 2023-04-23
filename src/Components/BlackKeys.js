@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import {handlePianoKey, BLACK_NOTES_NAMES } from "./general";
+import {handlePianoKey, NOTES} from "./general";
+
+const BLACK_NOTES = NOTES.filter((key) => {
+    return key.type === "black"
+})
 
 
 const BlackKeys = () => {
@@ -7,13 +11,13 @@ const BlackKeys = () => {
 
     return (
         <>
-            {BLACK_NOTES_NAMES.map((key, indx) => {
-                console.log(key)
+            {BLACK_NOTES.map((piano_key) => {
                 return (
                     <div
                         className="blackKey"
-                        key={key}
-                        onClick={() => handlePianoKey(key)}
+                        key={piano_key.key}
+                        onClick={() => {handlePianoKey(piano_key.key)}
+                    }
                         ></div>
 
                 )}
