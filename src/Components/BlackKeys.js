@@ -8,12 +8,14 @@ const BlackKeys = () => {
     return (
         <>
             {BLACK_NOTES_NAMES.map((key, indx) => {
+                console.log(key)
                 return (
                     <div
                         className="blackKey"
                         key={key}
-                        onClick={() => handlePianoKey("black", indx)}
+                        onClick={() => handlePianoKey(key)}
                         ></div>
+
                 )}
             )}
         </>

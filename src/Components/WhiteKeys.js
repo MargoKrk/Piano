@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import {handlePianoKey, WHITE_NOTES_NAMES } from "./general";
+import {handlePianoClick, handlePianoKey, playSound, WHITE_NOTES_NAMES} from "./general";
 
-const WhiteKeys = () => {
+const WhiteKeys = ({signature}) => {
 
-
+    ///* zamiast white notes names będzie odesłanie do mainList z odniesienie do sound/key/type*/
     return (
         <>
             {WHITE_NOTES_NAMES.map((key, indx) => {
             return (
                 <div className="whiteKey"
                      key={key}
-                onClick={() => handlePianoKey("white", indx)}
+                onClick={() => playSound(key) }
                 >
-                    {key}</div>
+                    {/*{signature === 'C' && key}*/}
+                </div>
             )}
             )}
         </>

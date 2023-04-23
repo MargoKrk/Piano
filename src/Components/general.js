@@ -1,10 +1,16 @@
-import React from 'react';
-
 export const WHITE_NOTES_NAMES = ["C3", "D3", "E3", "F3", "G3", "A3", "B3", "C4", "D4", "E4", "F4", "G4", "A4", "B4", "C5", "D5", "E5", "F5", "G5", "A5", "B5"];
 export const BLACK_NOTES_NAMES = ["cis3", "dis3", "none1", "fis3", "gis3", "ais3", "none2", "cis4", "dis4", "none3", "fis4", "gis4", "ais4", "none4", "cis5", "dis5", "none5", "fis5", "gis5", "ais5"];
-export const noteNames = {white: WHITE_NOTES_NAMES, black: BLACK_NOTES_NAMES}
-// export const WHITE_KEYS = ["a", "s", "d", "f", "g", "h", "j", "k", "l", ";", "'", "z", "x", "c", "v", "b", "n", "m", ",", ".", "/"]
-// export const BLACK_KEYS = ["q", "w", "1", "e", "r", "t", "2", "y", "u", "3", "i", "o", "p", "4", "[", "]", "5", "7", "8", "9"]
+export const mainList = [{
+    sound: "C3",
+    key: "a",
+    type: "white"
+},
+    {
+  sound: "cis3",
+  key: "q",
+  type: "black",
+    }]
+
 
 export const mapWhiteKeysToNote = {
     'a': 'C3',
@@ -57,16 +63,34 @@ export const mapBlackKeysToNote = {
     '9': 'ais5'
 }
 
-export const handlePianoKey = (color, indx) => {
 
-    console.log("zostałem dotknięty " + (indx + 1), color);
+export const noteNames = {...mapWhiteKeysToNote, ...mapBlackKeysToNote};
 
-    const noteToPlay = noteNames[color][indx];
-    const stringToFile = `../sound/${color}/${noteToPlay}.mp3`;
+
+export const playSound = (sound) => {
+
+    const stringToFile = `../sound/${sound}.mp3`;
     console.log(stringToFile);
 
     let audio = new Audio(stringToFile);
 
     return audio.play()
 }
+
+export const handlePianoKey = (indx) => {
+
+    console.log("zostałem dotknięty " + (indx));
+
+    const noteToPlay = noteNames[indx];
+    playSound(noteToPlay)
+}
+
+
+// export const handlePianoClick = (indx) => {
+//
+//     console.log("zostałem kliknięty " + (indx));
+//
+//     playSound(indx)
+// }
+
 
