@@ -1,15 +1,202 @@
 export const WHITE_NOTES_NAMES = ["C3", "D3", "E3", "F3", "G3", "A3", "B3", "C4", "D4", "E4", "F4", "G4", "A4", "B4", "C5", "D5", "E5", "F5", "G5", "A5", "B5"];
 export const BLACK_NOTES_NAMES = ["cis3", "dis3", "none1", "fis3", "gis3", "ais3", "none2", "cis4", "dis4", "none3", "fis4", "gis4", "ais4", "none4", "cis5", "dis5", "none5", "fis5", "gis5", "ais5"];
-export const mainList = [{
+export const NOTES = [{
     sound: "C3",
     key: "a",
     type: "white"
 },
     {
-  sound: "cis3",
-  key: "q",
-  type: "black",
-    }]
+        sound: "cis3",
+        key: "q",
+        type: "black",
+    },
+    {
+        sound: "D3",
+        key: "s",
+        type: "white",
+    },
+    {
+        sound: "dis3",
+        key: "w",
+        type: "black",
+    },
+    {
+        sound: "E3",
+        key: "d",
+        type: "white",
+    },
+    {
+        key: "none",
+    },
+    {
+        sound: "F3",
+        key: "f",
+        type: "white",
+    },
+    {
+        sound: "fis3",
+        key: "e",
+        type: "black",
+    },
+    {
+        sound: "G3",
+        key: "g",
+        type: "white",
+    },
+    {
+        sound: "gis3",
+        key: "r",
+        type: "black",
+    },
+    {
+        sound: "A3",
+        key: "h",
+        type: "white",
+    },
+    {
+        sound: "ais3",
+        key: "t",
+        type: "black",
+    },
+    {
+        sound: "B3",
+        key: "j",
+        type: "white",
+    },
+    {
+        key: "none",
+    },
+    {
+        sound: "C4",
+        key: "k",
+        type: "white",
+    },
+    {
+        sound: "cis4",
+        key: "y",
+        type: "black",
+    },
+    {
+        sound: "D4",
+        key: "l",
+        type: "white",
+    },
+    {
+        sound: "dis4",
+        key: "u",
+        type: "black",
+    },
+    {
+        sound: "E4",
+        key: ";",
+        type: "white",
+    },
+    {
+        key: "none",
+    },
+    {
+        sound: "F4",
+        key: "'",
+        type: "white",
+    },
+    {
+        sound: "fis4",
+        key: "i",
+        type: "black",
+    },
+    {
+        sound: "G4",
+        key: "z",
+        type: "white",
+    },
+    {
+        sound: "gis4",
+        key: "o",
+        type: "black",
+    },
+    {
+        sound: "A4",
+        key: "x",
+        type: "white",
+    },
+    {
+        sound: "ais4",
+        key: "p",
+        type: "black",
+    },
+    {
+        sound: "B4",
+        key: "c",
+        type: "white",
+    },
+    {
+        key: "none",
+    },
+    {
+        sound: "C5",
+        key: "v",
+        type: "white",
+    },
+    {
+        sound: "cis5",
+        key: "[",
+        type: "black",
+    },
+    {
+        sound: "D5",
+        key: "b",
+        type: "white",
+    },
+    {
+        sound: "dis5",
+        key: "]",
+        type: "black",
+    },
+    {
+        sound: "E5",
+        key: "n",
+        type: "white",
+    },
+    {
+        key: "none",
+    },
+    {
+        sound: "F5",
+        key: "m",
+        type: "white",
+    },
+    {
+        sound: "fis5",
+        key: "7",
+        type: "black",
+    },
+    {
+        sound: "G5",
+        key: ",",
+        type: "white",
+    },
+    {
+        sound: "gis5",
+        key: "8",
+        type: "black",
+    },
+    {
+        sound: "A5",
+        key: ".",
+        type: "white",
+    },
+    {
+        sound: "ais5",
+        key: "9",
+        type: "black",
+    },
+    {
+        sound: "B5",
+        key: "/",
+        type: "white",
+    },
+
+]
 
 
 export const mapWhiteKeysToNote = {
