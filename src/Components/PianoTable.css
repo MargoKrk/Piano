@@ -51,6 +51,7 @@
     border: 1px solid black;
     pointer-events: all;
 }
+
 .blackKey:nth-of-type(7n) {
     background-color: transparent;
     border-color: transparent;

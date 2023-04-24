@@ -261,14 +261,17 @@ export const mapBlackKeysToNote = {
 
 
 export const noteNames = {...mapWhiteKeysToNote, ...mapBlackKeysToNote};
+const stringToFile = `../sound/C3.mp3`;
+let audio = new Audio(stringToFile);
 
 
-export const playSound = (sound) => {
+export const playSound = (sound, volume) => {
 
     const stringToFile = `../sound/${sound}.mp3`;
     console.log(stringToFile);
 
     let audio = new Audio(stringToFile);
+    // audio.volume = volume
 
     return audio.play()
 }
@@ -282,3 +285,6 @@ export const handlePianoKey = (indx) => {
 }
 
 
+export const handleVolume = (e) => {
+    audio.volume = e.target.value
+}

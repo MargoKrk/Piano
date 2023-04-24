@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {handlePianoKey, NOTES} from "./general";
 
 const BLACK_NOTES = NOTES.filter((key) => {
@@ -6,21 +6,23 @@ const BLACK_NOTES = NOTES.filter((key) => {
 })
 
 
-const BlackKeys = () => {
+const BlackKeys = ({signature}) => {
 
 
     return (
         <>
             {BLACK_NOTES.map((piano_key) => {
-                return (
-                    <div
-                        className="blackKey"
-                        key={piano_key.key}
-                        onClick={() => {handlePianoKey(piano_key.key)}
-                    }
-                        ></div>
+                    return (
+                        <div
+                            className="blackKey"
+                            key={piano_key.key}
+                            onClick={() => handlePianoKey(piano_key.key)}>
+                            {signature === 'Keys' && piano_key.key}
+                            {signature === 'null' && null}
+                        </div>
 
-                )}
+                    )
+                }
             )}
         </>
     )
