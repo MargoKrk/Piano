@@ -1,13 +1,10 @@
 import React from "react";
 import './Navigation.css';
 import {Slider} from "@mui/material";
+import {handleRecord} from "./general"
 
 
 const Navigation = ({selectSignature, handleVolume}) => {
-
-    const getValue = (e) => {
-        console.log(`ściągam wartość ${e.target.value}`)
-    }
 
 
     return (
@@ -50,7 +47,9 @@ const Navigation = ({selectSignature, handleVolume}) => {
                 </div>
                 <div className="record">
                     <span>Record</span>
-                    <button className="record-button"></button>
+                    <button
+                        className="record-button"
+                        onClick={handleRecord}></button>
                 </div>
             </div>
         </>

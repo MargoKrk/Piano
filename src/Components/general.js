@@ -286,4 +286,6 @@ export const handlePianoKey = (indx, volume) => {
     playSound(noteToPlay, volume)
 }
 
-
+export const handleRecord = () => {
+    console.log("Naciśnięte nagrywanie")
+}

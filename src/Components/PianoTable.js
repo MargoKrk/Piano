@@ -9,6 +9,9 @@ import { handlePianoKey } from "./general";
 function PianoTable() {
     const [signature, setSignature] = useState([]);
     const [volume, setVolume] = useState(50);
+    const [songs, setSongs] = useState([]);
+    const [song, setSong] = useState({title:"", content: ""});
+    const {title, content} = song
 
     const selectSignature = (type) => {
         setSignature(type)
