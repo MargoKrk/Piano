@@ -5,7 +5,7 @@ const WHITE_NOTES = NOTES.filter((key) => {
     return key.type === "white"
 })
 
-const WhiteKeys = ({signature}) => {
+const WhiteKeys = ({signature, volume}) => {
 
     return (
         <>
@@ -13,7 +13,7 @@ const WhiteKeys = ({signature}) => {
                 return (
                     <div className="whiteKey"
                          key={piano_key.sound}
-                         onClick={() => playSound(piano_key.sound)}>
+                         onClick={() => playSound(piano_key.sound, volume)}>
                         {signature === 'C' && piano_key.sound}
                         {signature === 'Keys' && piano_key.key}
                         {signature === 'null' && null}

@@ -28,6 +28,23 @@
     padding: 0;
 }
 
+/*SLIDER*/
+
+.volume-change {
+    display: flex;
+    align-items: center;
+    width: 30%;
+}
+
+.volume-change span {
+    margin-right: 1vw;
+}
+
+.volumeSlider.MuiSlider-root {
+    color: grey;
+    width: 15vw;
+}
+
 
 .record {
     display: flex;
@@ -42,6 +59,6 @@
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    border: none;
+    border-color: #7c7c7c;
     background: linear-gradient(0deg, rgba(255,27,0,1) 0%, rgba(251,75,2,1) 100%);
 }

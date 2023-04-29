@@ -1,9 +1,14 @@
 import React from "react";
 import './Navigation.css';
-import {handleVolume} from "./general";
+import {Slider} from "@mui/material";
 
 
-const Navigation = ({selectSignature}) => {
+const Navigation = ({selectSignature, handleVolume}) => {
+
+    const getValue = (e) => {
+        console.log(`ściągam wartość ${e.target.value}`)
+    }
+
 
     return (
         <>
@@ -22,7 +27,8 @@ const Navigation = ({selectSignature}) => {
                                 selectSignature('Keys')
                                 console.log("zmieniam sygn na keys")
                             }}
-                    >Keys</button>
+                    >Keys
+                    </button>
                     <button
                         className="signature-button signature-button-none"
                         onClick={() => {
@@ -31,11 +37,16 @@ const Navigation = ({selectSignature}) => {
                         }}
                     ></button>
                 </div>
-                <div className="volume">
-                    <span>Volume</span> <input
-                    type="range"
-                    className="volume-slider" min="0" max="1" step="0.5"
-                    />
+                <div className="volume-change">
+                    <span>Volume</span>
+                    <Slider className="volumeSlider"
+                            defaultValue={50}
+                            aria-label="Small"
+                            size="small"
+                            valueLabelDisplay="auto"
+                            max={100}
+                            step={10}
+                            onChange={handleVolume}/>
                 </div>
                 <div className="record">
                     <span>Record</span>

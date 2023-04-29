@@ -1,3 +1,6 @@
+const PASSWORD = "0e8odfTcWoHB9E57"
+const KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVramZsYWxseHliZWp5dXl3aWdrIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODI4MDY4MjgsImV4cCI6MTk5ODM4MjgyOH0.HG3eUDigtVxH0-bCkumLRCA9OdhwKSn6ZtRxltceYK4"
+
 export const NOTES = [
     {
         sound: "C3",
@@ -261,8 +264,8 @@ export const mapBlackKeysToNote = {
 
 
 export const noteNames = {...mapWhiteKeysToNote, ...mapBlackKeysToNote};
-const stringToFile = `../sound/C3.mp3`;
-let audio = new Audio(stringToFile);
+// const stringToFile = `../sound/C3.mp3`;
+// let audio = new Audio(stringToFile);
 
 
 export const playSound = (sound, volume) => {
@@ -271,20 +274,16 @@ export const playSound = (sound, volume) => {
     console.log(stringToFile);
 
     let audio = new Audio(stringToFile);
-    // audio.volume = volume
-
+    audio.volume = volume
     return audio.play()
 }
 
-export const handlePianoKey = (indx) => {
+export const handlePianoKey = (indx, volume) => {
 
     console.log("zostałem dotknięty " + (indx));
 
     const noteToPlay = noteNames[indx];
-    playSound(noteToPlay)
+    playSound(noteToPlay, volume)
 }
 
 
-export const handleVolume = (e) => {
-    audio.volume = e.target.value
-}

@@ -6,7 +6,7 @@ const BLACK_NOTES = NOTES.filter((key) => {
 })
 
 
-const BlackKeys = ({signature}) => {
+const BlackKeys = ({signature, volume}) => {
 
 
     return (
@@ -16,7 +16,7 @@ const BlackKeys = ({signature}) => {
                         <div
                             className="blackKey"
                             key={piano_key.key}
-                            onClick={() => handlePianoKey(piano_key.key)}>
+                            onClick={() => handlePianoKey(piano_key.key, volume)}>
                             {signature === 'Keys' && piano_key.key}
                             {signature === 'null' && null}
                         </div>

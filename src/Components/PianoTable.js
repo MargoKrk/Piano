@@ -8,9 +8,17 @@ import { handlePianoKey } from "./general";
 
 function PianoTable() {
     const [signature, setSignature] = useState([]);
+    const [volume, setVolume] = useState(50);
 
     const selectSignature = (type) => {
         setSignature(type)
+    }
+
+    const handleVolume = (e) => {
+
+        let currentVolume = e.target.value
+        setVolume(currentVolume)
+        console.log(`zmieniam głośność ${currentVolume}`)
     }
 
     useEffect(() => {
@@ -22,16 +30,19 @@ function PianoTable() {
     }, [])
 
     return (
-        <div className="pianoTable">
-            <Navigation selectSignature={selectSignature}/>
+         <div className="pianoTable">
+            <Navigation selectSignature={selectSignature}
+            handleVolume={handleVolume}/>
             <div className="whiteKeysLayer">
                 <WhiteKeys
                     signature={signature}
+                    volume={volume}
                 />
             </div>
             <div className="blackKeysLayer">
                 <BlackKeys
                     signature={signature}
+                    volume={volume}
                 />
             </div>
         </div>
