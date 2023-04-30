@@ -3,14 +3,14 @@ import WhiteKeys from "./WhiteKeys"
 import BlackKeys from "./BlackKeys"
 import Navigation from "./Navigation"
 import './PianoTable.css';
-import { handlePianoKey } from "./general";
+import {handlePianoKey} from "./general";
 
 
 function PianoTable() {
     const [signature, setSignature] = useState([]);
     const [volume, setVolume] = useState(50);
     const [songs, setSongs] = useState([]);
-    const [song, setSong] = useState({title:"", content: ""});
+    const [song, setSong] = useState({title: "", content: ""});
     const {title, content} = song
 
     const selectSignature = (type) => {
@@ -33,9 +33,12 @@ function PianoTable() {
     }, [])
 
     return (
-         <div className="pianoTable">
-            <Navigation selectSignature={selectSignature}
-            handleVolume={handleVolume}/>
+        <div className="pianoTable">
+            <Navigation
+                selectSignature={selectSignature}
+                handleVolume={handleVolume}
+                
+            />
             <div className="whiteKeysLayer">
                 <WhiteKeys
                     signature={signature}

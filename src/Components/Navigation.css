@@ -60,5 +60,12 @@
     height: 20px;
     border-radius: 50%;
     border-color: #7c7c7c;
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.34)), to(#e6e6e6));
+}
+
+.record-button.active {
+
+    border-color: #7c7c7c;
     background: linear-gradient(0deg, rgba(255,27,0,1) 0%, rgba(251,75,2,1) 100%);
+
 }

@@ -1,10 +1,16 @@
-import React from "react";
+import React, {useState} from "react";
 import './Navigation.css';
 import {Slider} from "@mui/material";
 import {handleRecord} from "./general"
 
 
 const Navigation = ({selectSignature, handleVolume}) => {
+    const [isActive, setIsActive] = useState(false)
+
+
+    const handleRecordToggle = () => {
+        setIsActive(!isActive)
+    }
 
 
     return (
@@ -48,8 +54,10 @@ const Navigation = ({selectSignature, handleVolume}) => {
                 <div className="record">
                     <span>Record</span>
                     <button
-                        className="record-button"
-                        onClick={handleRecord}></button>
+                        className={`record-button ${isActive ? "active" : ""}`}
+                        onClick={() => {
+                            handleRecord();
+                            handleRecordToggle()}}></button>
                 </div>
             </div>
         </>

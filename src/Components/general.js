@@ -274,7 +274,7 @@ export const playSound = (sound, volume) => {
     console.log(stringToFile);
 
     let audio = new Audio(stringToFile);
-    audio.volume = volume
+    audio.volume = volume / 100;
     return audio.play()
 }
 

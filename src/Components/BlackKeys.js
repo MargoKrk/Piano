@@ -14,7 +14,7 @@ const BlackKeys = ({signature, volume}) => {
             {BLACK_NOTES.map((piano_key) => {
                     return (
                         <div
-                            className="blackKey"
+                            className={`blackKey ${piano_key.sound}`}
                             key={piano_key.key}
                             onClick={() => handlePianoKey(piano_key.key, volume)}>
                             {signature === 'Keys' && piano_key.key}
