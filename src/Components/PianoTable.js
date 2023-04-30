@@ -4,6 +4,7 @@ import BlackKeys from "./BlackKeys"
 import Navigation from "./Navigation"
 import './PianoTable.css';
 import {handlePianoKey} from "./general";
+import { handleRecord } from "./Navigation"
 
 
 function PianoTable() {
@@ -37,7 +38,8 @@ function PianoTable() {
             <Navigation
                 selectSignature={selectSignature}
                 handleVolume={handleVolume}
-                
+                songs={songs}
+
             />
             <div className="whiteKeysLayer">
                 <WhiteKeys

@@ -1,15 +1,24 @@
 import React, {useState} from "react";
 import './Navigation.css';
 import {Slider} from "@mui/material";
-import {handleRecord} from "./general"
+import { startRecording, stopRecording } from "./general"
 
 
-const Navigation = ({selectSignature, handleVolume}) => {
+const Navigation = ({selectSignature, handleVolume, songs}) => {
     const [isActive, setIsActive] = useState(false)
 
-
-    const handleRecordToggle = () => {
+    const classRecordToggle = () => {
         setIsActive(!isActive)
+    }
+
+    const handleRecord = () => {
+        if (!isActive === true) {
+            startRecording()
+            console.log("zaczynam nagrywać")
+        } else {
+            stopRecording()
+            console.log("skończono nagrywać")
+        }
     }
 
 
@@ -54,11 +63,18 @@ const Navigation = ({selectSignature, handleVolume}) => {
                 <div className="record">
                     <span>Record</span>
                     <button
-                        className={`record-button ${isActive ? "active" : ""}`}
+                        className={`button ${isActive ? "record-button active" : ""}`}
                         onClick={() => {
                             handleRecord();
-                            handleRecordToggle()}}></button>
+                            classRecordToggle()
+                        }}
+                    ></button>
                 </div>
+                {songs.length > 0 &&
+                    <div>
+                        <span>Play</span>
+                    <button className={`button`}></button>
+                    </div>}
             </div>
         </>
     )

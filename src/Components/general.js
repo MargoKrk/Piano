@@ -264,11 +264,16 @@ export const mapBlackKeysToNote = {
 
 
 export const noteNames = {...mapWhiteKeysToNote, ...mapBlackKeysToNote};
-// const stringToFile = `../sound/C3.mp3`;
-// let audio = new Audio(stringToFile);
-
 
 export const playSound = (sound, volume) => {
+
+    if(startRecording()){
+        songNotes.push({
+            key: sound,
+            startTime: recordingStartTime,
+        })
+
+    }
 
     const stringToFile = `../sound/${sound}.mp3`;
     console.log(stringToFile);
@@ -276,6 +281,7 @@ export const playSound = (sound, volume) => {
     let audio = new Audio(stringToFile);
     audio.volume = volume / 100;
     return audio.play()
+
 }
 
 export const handlePianoKey = (indx, volume) => {
@@ -286,6 +292,20 @@ export const handlePianoKey = (indx, volume) => {
     playSound(noteToPlay, volume)
 }
 
-export const handleRecord = () => {
-    console.log("Naciśnięte nagrywanie")
+let recordingStartTime
+let songNotes= [];
+
+export const startRecording = (note) => {
+    recordingStartTime = Date.now();
 }
+
+export const stopRecording = () => {
+    playSong()
+}
+
+export const playSong = () => {
+    console.log(songNotes)
+}
+
+// export const recordNote = (note) => {
+// }
