@@ -1,6 +1,3 @@
-const PASSWORD = "0e8odfTcWoHB9E57"
-const KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVramZsYWxseHliZWp5dXl3aWdrIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODI4MDY4MjgsImV4cCI6MTk5ODM4MjgyOH0.HG3eUDigtVxH0-bCkumLRCA9OdhwKSn6ZtRxltceYK4"
-
 export const NOTES = [
     {
         sound: "C3",

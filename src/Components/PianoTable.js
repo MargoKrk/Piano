@@ -4,7 +4,7 @@ import BlackKeys from "./BlackKeys"
 import Navigation from "./Navigation"
 import './PianoTable.css';
 import {handlePianoKey} from "./general";
-import { handleRecord } from "./Navigation"
+import supabase from "../config/supabaseClient";
 
 
 function PianoTable() {
