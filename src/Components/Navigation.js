@@ -25,7 +25,7 @@ const Navigation = ({selectSignature, handleVolume, songs}) => {
             <div className="navigation">
                 <div className="songs-list">
                     {songs.map(song => (
-                        <li>{song.title}</li>
+                        <li key={song.title}>{song.title} <button className={`button button-play`}></button></li>
                     ))}
                 </div>
                 <div className="signatures-toggle">
@@ -73,11 +73,6 @@ const Navigation = ({selectSignature, handleVolume, songs}) => {
                         }}
                     ></button>
                 </div>
-                {songs.length > 0 &&
-                    <div>
-                        <span>Play</span>
-                    <button className={`button`}></button>
-                    </div>}
             </div>
         </>
     )
