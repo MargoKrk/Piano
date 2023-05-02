@@ -1,5 +1,5 @@
 import React from 'react';
-import {handlePianoKey, NOTES} from "./general";
+import {handlePianoKey, NOTES, playSound} from "./general";
 
 const BLACK_NOTES = NOTES.filter((key) => {
     return key.type === "black"
@@ -16,7 +16,7 @@ const BlackKeys = ({signature, volume}) => {
                         <div
                             className={`blackKey ${piano_key.sound}`}
                             key={piano_key.key}
-                            onClick={() => handlePianoKey(piano_key.key, volume)}>
+                            onClick={() => playSound(piano_key.sound, volume)}>
                             {signature === 'Keys' && piano_key.key}
                             {signature === 'null' && null}
                         </div>

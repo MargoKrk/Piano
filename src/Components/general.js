@@ -207,70 +207,11 @@ export const NOTES = [
 
 ]
 
-
-export const mapWhiteKeysToNote = {
-    'a': 'C3',
-    's': 'D3',
-    'd': 'E3',
-    'f': 'F3',
-    'g': 'G3',
-    'h': 'A3',
-    'j': 'B3',
-
-    'k': 'C4',
-    'l': 'D4',
-    ';': 'E4',
-    "'": 'F4',
-    'z': 'G4',
-    'x': 'A4',
-    'c': 'B4',
-
-    'v': 'C5',
-    'b': 'D5',
-    'n': 'E5',
-    'm': 'F5',
-    ',': 'G5',
-    '.': 'A5',
-    '/': 'B5',
-}
-
-export const mapBlackKeysToNote = {
-    'q': 'cis3',
-    'w': 'dis3',
-    'none1': '1',
-    'e': 'fis3',
-    'r': 'gis3',
-    't': 'ais3',
-    'none2': '2',
-
-    'y': 'cis4',
-    'u': 'dis4',
-    'none3': '3',
-    'i': 'fis4',
-    'o': 'gis4',
-    'p': 'ais4',
-    'none4': '4',
-
-    '[': 'cis5',
-    ']': 'dis5',
-    'none5': '5',
-    '7': 'fis5',
-    '8': 'gis5',
-    '9': 'ais5'
-}
-
-
-export const noteNames = {...mapWhiteKeysToNote, ...mapBlackKeysToNote};
+const ALL_KEYBOARD_KEYS = NOTES.map((note) =>  note.key)
 
 export const playSound = (sound, volume) => {
 
-    if(startRecording()){
-        songNotes.push({
-            key: sound,
-            startTime: recordingStartTime,
-        })
-
-    }
+    startRecording(sound)
 
     const stringToFile = `../sound/${sound}.mp3`;
     console.log(stringToFile);
@@ -285,24 +226,42 @@ export const handlePianoKey = (indx, volume) => {
 
     console.log("zostałem dotknięty " + (indx));
 
-    const noteToPlay = noteNames[indx];
-    playSound(noteToPlay, volume)
+    if (ALL_KEYBOARD_KEYS.includes(indx)) {
+        const objectToPlay = NOTES.filter((key) => {
+                return key.key === indx
+            }
+        )
+        console.log(volume)
+        console.log(objectToPlay)
+
+        const noteToPlay = objectToPlay[0].sound
+        console.log(noteToPlay)
+
+        playSound(noteToPlay, volume)
+    }
 }
 
 let recordingStartTime
-let songNotes= [];
+let songNotes = [];
 
 export const startRecording = (note) => {
-    recordingStartTime = Date.now();
+    recordingStartTime = Date.now(); // zmienić bez całej daty
+    console.log("zaczynam nagrywać")
+    songNotes.push(
+        {
+            key: note,
+            startTime: recordingStartTime
+        }
+    )
+
+
 }
 
 export const stopRecording = () => {
     playSong()
+    console.log("skończono nagrywać")
 }
 
 export const playSong = () => {
     console.log(songNotes)
 }
-
-// export const recordNote = (note) => {
-// }

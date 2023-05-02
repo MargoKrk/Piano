@@ -14,10 +14,8 @@ const Navigation = ({selectSignature, handleVolume, songs}) => {
     const handleRecord = () => {
         if (!isActive === true) {
             startRecording()
-            console.log("zaczynam nagrywać")
         } else {
             stopRecording()
-            console.log("skończono nagrywać")
         }
     }
 
@@ -25,6 +23,11 @@ const Navigation = ({selectSignature, handleVolume, songs}) => {
     return (
         <>
             <div className="navigation">
+                <div className="songs-list">
+                    {songs.map(song => (
+                        <li>{song.title}</li>
+                    ))}
+                </div>
                 <div className="signatures-toggle">
                     <span>Signatures</span>
                     <button className="signature-button signature-button-C"
