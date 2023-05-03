@@ -4,21 +4,7 @@ import {Slider} from "@mui/material";
 import { startRecording, stopRecording } from "./general"
 
 
-const Navigation = ({selectSignature, handleVolume, songs}) => {
-    const [isActive, setIsActive] = useState(false)
-
-    const classRecordToggle = () => {
-        setIsActive(!isActive)
-    }
-
-    const handleRecord = () => {
-        if (!isActive === true) {
-            startRecording()
-        } else {
-            stopRecording()
-        }
-    }
-
+const Navigation = ({selectSignature, handleVolume, songs, classRecordToggle, handleRecord, isRecordActive}) => {
 
     return (
         <>
@@ -66,10 +52,11 @@ const Navigation = ({selectSignature, handleVolume, songs}) => {
                 <div className="record">
                     <span>Record</span>
                     <button
-                        className={`button ${isActive ? "record-button active" : ""}`}
+                        className={`button ${isRecordActive  ? "record-button active" : ""}`}
                         onClick={() => {
-                            handleRecord();
+                            console.log(isRecordActive)
                             classRecordToggle()
+                            handleRecord()
                         }}
                     ></button>
                 </div>

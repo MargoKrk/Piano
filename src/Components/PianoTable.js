@@ -3,17 +3,18 @@ import WhiteKeys from "./WhiteKeys"
 import BlackKeys from "./BlackKeys"
 import Navigation from "./Navigation"
 import './PianoTable.css';
-import {handlePianoKey} from "./general";
-import supabase, {SUPABASE_KEY, supabaseKey, supabaseUrl} from "../config/supabaseClient";
-
-
-let  ALL_KEYS = [];
+import {handlePianoKey, startRecording, stopRecording} from "./general";
+import supabase from "../config/supabaseClient";
 
 
 function PianoTable() {
     const [signature, setSignature] = useState([]);
     const [volume, setVolume] = useState(50);
     const [songs, setSongs] = useState([]);
+    const [isRecordActive, setIsRecordActive] = useState(false)
+    const [keyDownTime, setKeyDownTime] = useState(null);
+    const [keyUpTime, setKeyUpTime] = useState(null);
+
 
     const selectSignature = (type) => {
         setSignature(type)
@@ -26,13 +27,41 @@ function PianoTable() {
         console.log(`zmieniam głośność ${currentVolume}`)
     }
 
+    const classRecordToggle = () => {
+        setIsRecordActive(prevIsRecordActive => !prevIsRecordActive)
+        console.log(isRecordActive)
+    }
+
+    const handleRecord = (note, value) => {
+        if (isRecordActive === value) {
+            startRecording(note)
+        } else {
+            stopRecording()
+        }
+    }
+
+    const handleKeyDown = (e) => {
+        setKeyDownTime(e.timeStamp)
+    }
+
+    const handleKeyUp = (e) => {
+        setKeyUpTime(e.timeStamp);
+        const timeDiff = keyUpTime - keyDownTime;
+
+    }
+
+
     useEffect(() => {
         document.onkeydown = function handleKeydown(e) {
-            console.log('key down');
-            console.log(e);
-            handlePianoKey(e.key, volume)
+            // console.log(e);
+            handlePianoKey(e.key, volume);
+            console.log(e.key)
+            console.log(isRecordActive)
+            handleRecord(e.key, true)
         }
-    }, [volume])
+    }, [volume, isRecordActive])
+
+
 
     useEffect(() => {
 
@@ -40,7 +69,6 @@ function PianoTable() {
             const { data, error } = await supabase
                 .from('songs')
                 .select()
-            console.log({data})
             if(error){
                 setSongs(null)
                 console.log(error)
@@ -51,42 +79,30 @@ function PianoTable() {
         fetchSongs()
     }, [])
 
-    // useEffect(() => {
-    //     fetch(supabaseUrl, {
-    //         headers: {
-    //             Authorization: SUPABASE_KEY
-    //         },
-    //     })
-    //         .then(response => {
-    //             if(response.ok) {
-    //                 return response.json()
-    //             }
-    //             throw Error(`${response.status} - ${response.statusText}`)
-    //         }).then(data => {
-    //             setSongs(data)
-    //     }).catch(error => {
-    //         console.error(error)
-    //     })
-    //
-    // }, [])
-
     return (
         <div className="pianoTable">
             <Navigation
                 selectSignature={selectSignature}
                 handleVolume={handleVolume}
                 songs={songs}
+                classRecordToggle={classRecordToggle}
+                handleRecord={handleRecord}
+                isRecordActive={isRecordActive}
             />
             <div className="whiteKeysLayer">
                 <WhiteKeys
                     signature={signature}
                     volume={volume}
+                    handleRecord={handleRecord}
+                    isRecordActive={isRecordActive}
                 />
             </div>
             <div className="blackKeysLayer">
                 <BlackKeys
                     signature={signature}
                     volume={volume}
+                    handleRecord={handleRecord}
+                    isRecordActive={isRecordActive}
                 />
             </div>
         </div>

@@ -208,10 +208,9 @@ export const NOTES = [
 ]
 
 const ALL_KEYBOARD_KEYS = NOTES.map((note) =>  note.key)
+const ALL_SOUND = NOTES.map((note) => note.sound)
 
 export const playSound = (sound, volume) => {
-
-    startRecording(sound)
 
     const stringToFile = `../sound/${sound}.mp3`;
     console.log(stringToFile);
@@ -231,11 +230,8 @@ export const handlePianoKey = (indx, volume) => {
                 return key.key === indx
             }
         )
-        console.log(volume)
-        console.log(objectToPlay)
 
         const noteToPlay = objectToPlay[0].sound
-        console.log(noteToPlay)
 
         playSound(noteToPlay, volume)
     }
@@ -253,8 +249,6 @@ export const startRecording = (note) => {
             startTime: recordingStartTime
         }
     )
-
-
 }
 
 export const stopRecording = () => {
