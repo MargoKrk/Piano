@@ -6,7 +6,7 @@ const BLACK_NOTES = NOTES.filter((key) => {
 })
 
 
-const BlackKeys = ({signature, volume, handleRecord, isRecordActive}) => {
+const BlackKeys = ({signature, volume, handleRecord}) => {
 
 
     return (
@@ -16,7 +16,7 @@ const BlackKeys = ({signature, volume, handleRecord, isRecordActive}) => {
                         <div
                             className={`blackKey ${piano_key.sound}`}
                             key={piano_key.key}
-                            onClick={() => {
+                            onMouseDown={() => {
                                 playSound(piano_key.sound, volume)
                                 handleRecord(piano_key.sound, true)
                             }}>

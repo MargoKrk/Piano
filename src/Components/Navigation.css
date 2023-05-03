@@ -1,38 +1,41 @@
 .navigation {
     display: flex;
-    justify-content: space-around;
     position: absolute;
-    z-index: 1;
     top: 0;
-    color: white;
-    width: 100%;
+    width: 90%;
     height: 50%;
-    align-items: end;
-    padding-bottom: 10px;
+    padding: 10px 0;
     flex-wrap: wrap;
 }
 
+.switches {
+    display: flex;
+    justify-content: space-around;
+    color: white;
+    width: 100%;
+    height: 50%;
+
+}
+
 .songs-list {
-    width: 90%;
+    width: 100%;
     height: 70%;
     color: white;
     padding: 2vw 1vw;
     display: inline-flex;
     flex-direction: column;
-
-
 }
+
 .songs-list li {
     list-style: none;
     margin-bottom: 0.5vw;
-    display: flex;
-    align-items: center;
 }
 
 .signatures-toggle {
     display: flex;
     align-items: center;
     gap: 0.5vw;
+    width: 30%;
 }
 
 .signature-button {
@@ -67,10 +70,12 @@
 .record {
     display: flex;
     align-items: center;
+    justify-content: center;
+    width: 30%;
 }
 
 .record span {
-    padding-right: 10px;
+    padding: 0 5px 0 0;
 }
 .button {
     cursor: pointer;
@@ -82,10 +87,8 @@
 }
 
 .record-button.active {
-
     border-color: #7c7c7c;
     background: linear-gradient(0deg, rgba(255,27,0,1) 0%, rgba(251,75,2,1) 100%);
-
 }
 
 .button-play {
@@ -94,3 +97,24 @@
     margin-left: 0.5vw;
 }
 
+.save {
+    display: flex;
+    align-items: center;
+}
+
+.save span {
+    padding: 0 5px;
+}
+
+input.title{
+    z-index: 2;
+    width: 5vw;
+    height: 1.8vw;
+    margin-right: 5px;
+    font-size: 1.5vw;
+}
+
+input::placeholder {
+    font-size: 1vw;
+    color: grey;
+}

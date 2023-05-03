@@ -12,9 +12,8 @@ function PianoTable() {
     const [volume, setVolume] = useState(50);
     const [songs, setSongs] = useState([]);
     const [isRecordActive, setIsRecordActive] = useState(false)
-    const [keyDownTime, setKeyDownTime] = useState(null);
-    const [keyUpTime, setKeyUpTime] = useState(null);
-
+    // const [keyDownTime, setKeyDownTime] = useState(null);
+    // const [keyUpTime, setKeyUpTime] = useState(null);
 
     const selectSignature = (type) => {
         setSignature(type)
@@ -40,28 +39,33 @@ function PianoTable() {
         }
     }
 
-    const handleKeyDown = (e) => {
-        setKeyDownTime(e.timeStamp)
-    }
-
-    const handleKeyUp = (e) => {
-        setKeyUpTime(e.timeStamp);
-        const timeDiff = keyUpTime - keyDownTime;
-
-    }
+    // const handleKeyDown = (e) => {
+    //     setKeyDownTime(e.timeStamp)
+    // }
+    //
+    // const handleKeyUp = (e) => {
+    //     setKeyUpTime(e.timeStamp);
+    //     const timeDiff = keyUpTime - keyDownTime;
+    //     console.log(`czas pomiędzy naciśnięcie a puszczeniem to ${timeDiff} `)
+    //
+    // }
 
 
     useEffect(() => {
         document.onkeydown = function handleKeydown(e) {
             // console.log(e);
             handlePianoKey(e.key, volume);
-            console.log(e.key)
-            console.log(isRecordActive)
-            handleRecord(e.key, true)
+            console.log(e.key);
+            console.log(isRecordActive);
+            handleRecord(e.key, true);
+            // e.key.classList.add("active")
         }
     }, [volume, isRecordActive])
 
 
+    const addNewSong = (newSong) => {
+        setSongs(prevSongs => [...prevSongs, newSong])
+    }
 
     useEffect(() => {
 
@@ -88,6 +92,7 @@ function PianoTable() {
                 classRecordToggle={classRecordToggle}
                 handleRecord={handleRecord}
                 isRecordActive={isRecordActive}
+                addNewSong={addNewSong}
             />
             <div className="whiteKeysLayer">
                 <WhiteKeys
