@@ -3,7 +3,7 @@ import WhiteKeys from "./WhiteKeys"
 import BlackKeys from "./BlackKeys"
 import Navigation from "./Navigation"
 import './PianoTable.css';
-import {handlePianoKey, startRecording, stopRecording} from "./general";
+import {handlePianoKey, recordNote, startRecording, stopRecording} from "./general";
 import supabase from "../config/supabaseClient";
 
 
@@ -31,8 +31,8 @@ function PianoTable() {
         console.log(isRecordActive)
     }
 
-    const handleRecord = (note, value) => {
-        if (isRecordActive === value) {
+    const handleRecord = (note) => {
+        if (!isRecordActive) {
             startRecording(note)
         } else {
             stopRecording()
@@ -57,7 +57,7 @@ function PianoTable() {
             handlePianoKey(e.key, volume);
             console.log(e.key);
             console.log(isRecordActive);
-            handleRecord(e.key, true);
+            if(isRecordActive)recordNote(e.key)
             // e.key.classList.add("active")
         }
     }, [volume, isRecordActive])
@@ -98,7 +98,6 @@ function PianoTable() {
                 <WhiteKeys
                     signature={signature}
                     volume={volume}
-                    handleRecord={handleRecord}
                     isRecordActive={isRecordActive}
                 />
             </div>
@@ -106,7 +105,6 @@ function PianoTable() {
                 <BlackKeys
                     signature={signature}
                     volume={volume}
-                    handleRecord={handleRecord}
                     isRecordActive={isRecordActive}
                 />
             </div>
