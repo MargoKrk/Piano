@@ -30,7 +30,9 @@ const Navigation = ({
             .from('songs')
             .insert([{title, content}])
             .select()
-console.log(data, error)
+
+            console.log(data, error)
+
         if (error) {
             setErrors(["Wprowadź tytuł"])
             console.log(error)
@@ -111,7 +113,7 @@ console.log(data, error)
                                 handleRecord();
                             }}
                         ></button>
-                        {songNotesList.length > 0 && (
+                        {songNotesList.length > 1 && (
                             <form className="save" onSubmit={handleSubmit}>
                                 <span>Save</span>
                                 <input
@@ -127,8 +129,7 @@ console.log(data, error)
                                         key={indx}
                                         style={{color: "white", position: "absolute", bottom: -5}}
                                     >
-                    {error}
-                  </span>
+                                    {error}</span>
                                 ))}
                             </form>
                         )}

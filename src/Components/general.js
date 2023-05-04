@@ -233,7 +233,6 @@ export const handlePianoKey = (indx, volume) => {
 
         const noteToPlay = objectToPlay[0].sound
 
-
         playSound(noteToPlay, volume)
     }
 }
@@ -243,7 +242,7 @@ let recordNoteTime
 export let songNotesList = [];
 
 export const startRecording = (note) => {
-    recordingStartTime = Date.now(); // zmienić bez całej daty
+    recordingStartTime = Date.now();
     console.log("zaczynam nagrywać")
     recordNote(note)
 }
