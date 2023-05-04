@@ -46,7 +46,7 @@ function PianoTable() {
     // const handleKeyUp = (e) => {
     //     setKeyUpTime(e.timeStamp);
     //     const timeDiff = keyUpTime - keyDownTime;
-    //     console.log(`czas pomiędzy naciśnięcie a puszczeniem to ${timeDiff} `)
+    //     console.log(`czas pomiędzy naciśnięciem a puszczeniem to ${timeDiff} `)
     //
     // }
 
