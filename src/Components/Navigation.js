@@ -1,21 +1,16 @@
 import React, {useState} from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCirclePlay } from '@fortawesome/free-solid-svg-icons'
 import "./Navigation.css";
 import {Slider} from "@mui/material";
 import {songNotesList} from "./general";
 import supabase from "../config/supabaseClient";
 
-const Navigation = ({
-                        selectSignature,
-                        handleVolume,
-                        classRecordToggle,
-                        handleRecord,
-                        isRecordActive,
-                        songs,
-                        addNewSong,
-                    }) => {
+const Navigation = ({ selectSignature, handleVolume, classRecordToggle, handleRecord, isRecordActive, songs, addNewSong }) => {
     const [title, setTitle] = useState("");
-    const [content, setContent] = useState(songNotesList);
+    const [content, setContent] = useState([]);
     const [errors, setErrors] = useState([]);
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -41,7 +36,7 @@ const Navigation = ({
         if (data) {
             console.log(title, content);
             setTitle("");
-            setContent([])
+            songNotesList = [];
             setErrors([]);
             addNewSong({title})
         }
@@ -51,13 +46,16 @@ const Navigation = ({
     return (
         <>
             <div className="navigation">
-                <div className="songs-list">
+                <div className="navigation-header">
+                <select>
                     {songs.map((song) => (
-                        <li key={song.title}>
+                        <option value={song.title} key={song.title}>
                             {song.title}
-                            <button className={`button button-play`}></button>
-                        </li>
+                        </option>
                     ))}
+                </select>
+                    <button className={"button-play button"}><div className="play"></div></button>
+                    <FontAwesomeIcon icon={faCirclePlay} className="play" />
                 </div>
                 <div className="switches">
                     <div className="signatures-toggle">
