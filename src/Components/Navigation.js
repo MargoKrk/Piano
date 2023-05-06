@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay, faPause, faTrashCan } from '@fortawesome/free-solid-svg-icons'
-import "./Navigation.css";
+import "../scss/navigation.scss"
 import {Slider} from "@mui/material";
 import {songNotesList} from "./general";
 import supabase from "../config/supabaseClient";
@@ -170,7 +170,7 @@ const Navigation = ({ selectSignature, handleVolume, classRecordToggle, handleRe
                         <span>Record</span>
                         <button
                             className={`button ${
-                                isRecordActive ? "record-button active" : ""
+                                isRecordActive ? "record-button" : ""
                             }`}
                             onClick={() => {
                                 console.log(isRecordActive);

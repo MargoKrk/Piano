@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import WhiteKeys from "./WhiteKeys"
 import BlackKeys from "./BlackKeys"
 import Navigation from "./Navigation"
-import './PianoTable.css';
+import "../scss/pianoTable.scss"
 import {handlePianoKey, recordNote, startRecording, stopRecording} from "./general";
 import supabase from "../config/supabaseClient";
 

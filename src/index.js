@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-// import "./index.scss";
+import "./scss/main.scss";
 import PianoTable from './Components/PianoTable';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

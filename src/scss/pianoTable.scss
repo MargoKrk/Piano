@@ -1,0 +1,104 @@
+.pianoTable {
+  background-color: black;
+  width: 80vw;
+  height: 30vw;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  position: relative;
+  font-size: 1.5vw;
+  border-radius: 2vw;
+
+  .whiteKeysLayer {
+    display: flex;
+    transform: scale(1.7);
+    transform-origin: bottom;
+    color: black;
+    font-size: 8px;
+    text-align: center;
+
+    .whiteKey {
+      position: relative;
+      background: linear-gradient(#fff 96%, #eee 4%);
+      width: 2vw;
+      height: 8vw;
+      border-radius: 0 0 0.3vw 0.3vw;
+      border: 1px solid black;
+      display: flex;
+      align-items: end;
+      justify-content: center;
+
+      &:active {
+        background-color: #ffffff;
+        box-shadow: inset 0 -5px 5px 0 rgba(66, 68, 90, 1);
+      }
+
+      &:hover {
+        background-color: lightgray;
+      }
+
+    }
+
+  }
+
+  .blackKeysLayer {
+    display: flex;
+    position: absolute;
+    padding-right: 1vw;
+    transform: scale(1.7);
+    transform-origin: bottom;
+    pointer-events: none;
+    color: white;
+    font-size: 5px;
+    text-align: center;
+
+    .blackKey {
+      background: linear-gradient(#333, #000);
+      width: 1vw;
+      height: 5vw;
+      border-radius: 0 0 0.1vw 0.1vw;
+      margin-bottom: 3vw;
+      margin-left: 1vw;
+      border: 1px solid black;
+      pointer-events: all;
+
+      &:hover {
+        background-color: rgb(30, 30, 30);
+      }
+
+      &:active {
+        background-color: black;
+        box-shadow: inset 0 -15px 5px 0 rgba(66, 68, 90, 1);
+      }
+    }
+
+    .blackKey:nth-of-type(7n) {
+      background: transparent;
+      border-color: transparent;
+      pointer-events: none;
+      color: transparent;
+    }
+
+    .blackKey:nth-child(7n+3) {
+      background: transparent;
+      border-color: transparent;
+      pointer-events: none;
+      color: transparent;
+    }
+
+
+  }
+
+
+}
+
+
+//.whiteKey.active {
+//  background-color: #ffffff;
+//  box-shadow: inset 0 -5px 5px 0 rgba(66, 68, 90, 1);
+//}
+//
+//.blackKey.active {
+//  background-color: black;
+//  box-shadow: inset 0 -15px 5px 0 rgba(66, 68, 90, 1);
+//}
