@@ -237,8 +237,3 @@ export const handlePianoKey = (indx, volume) => {
     }
 }
 
-// let recordingStartTime
-// let recordNoteTime
-// export let songNotesList = [];
-
-

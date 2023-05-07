@@ -75,6 +75,14 @@ function PianoTable() {
         setSongs(prevSongs => [...prevSongs, newSong])
     }
 
+    const reloadSongList = (title) => {
+        setSongs(prevSetSongs => {
+            return prevSetSongs.filter(song => {
+                return song.title !== title
+            })
+        })
+    }
+
 
     useEffect(() => {
         document.onkeydown = function handleKeydown(e) {
@@ -161,6 +169,7 @@ function PianoTable() {
                 title={title}
                 content={content}
                 changeTitle={changeTitle}
+                reloadSongList={reloadSongList}
             />
             <div className="whiteKeysLayer">
                 <WhiteKeys

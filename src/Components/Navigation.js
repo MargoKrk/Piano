@@ -6,30 +6,17 @@ import {Slider} from "@mui/material";
 // import {songNotesList} from "./general";
 import supabase from "../config/supabaseClient";
 
-const Navigation = ({
-                        selectSignature,
-                        handleVolume,
-                        classRecordToggle,
-                        handleRecord,
-                        isRecordActive,
-                        songs,
-                        addNewSong,
-                        content,
-                        handleSubmit,
-                        errors,
-                        title,
-                        changeTitle
+const Navigation = ({selectSignature, handleVolume, classRecordToggle, handleRecord, isRecordActive, songs, content, handleSubmit, errors, title, changeTitle, reloadSongList
                     }) => {
+
     const [selected, setSelected] = useState();
     const [isPlayActive, setIsPlayActive] = useState(false)
     const [selectedSong, setSelectedSong] = useState({})
 
 
-
     const handleSelect = async (e) => {
 
         const thisSong = e.target.value
-
 
         console.log(`handle select`, thisSong, typeof thisSong)
         const {data} = await supabase
@@ -65,19 +52,12 @@ const Navigation = ({
     }
 
     const handleDelete = async () => {
-        console.log(`selected`, selected)
-        console.log(selectedSong)
-
-
-        console.log(`handle delete`, selected, typeof selected)
 
         const {data, error} = await supabase
             .from('songs')
             .delete()
             .eq('title', selected)
-
-        console.log(data)
-        console.log(selected)
+            .select()
 
         if (error) {
             console.log(error)
@@ -86,7 +66,7 @@ const Navigation = ({
         if (data) {
             console.log(data)
             console.log(selected)
-            setSelected("Song List")
+            reloadSongList(selected)
         }
     }
 
