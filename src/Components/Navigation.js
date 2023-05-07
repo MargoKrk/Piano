@@ -44,10 +44,14 @@ const Navigation = ({selectSignature, handleVolume, classRecordToggle, handleRec
         const {data, error} = await supabase
             .from('songs')
             .select()
-            .eq('title', {selected})
+            .eq('title', selected)
 
-        // console.log(data)
-        // console.log(selected)
+        console.log(data[0])
+        console.log(selected)
+
+        const objectToPlay = data[0];
+        const contentToPlay = objectToPlay.content;
+        console.log(contentToPlay)
 
     }
 

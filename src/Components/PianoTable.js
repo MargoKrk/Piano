@@ -3,7 +3,7 @@ import WhiteKeys from "./WhiteKeys"
 import BlackKeys from "./BlackKeys"
 import Navigation from "./Navigation"
 import "../scss/pianoTable.scss"
-import { handlePianoKey } from "./general";
+import {handlePianoKey, playSound} from "./general";
 import supabase from "../config/supabaseClient";
 
 
@@ -12,8 +12,7 @@ function PianoTable() {
     const [volume, setVolume] = useState(50);
     const [songs, setSongs] = useState([]);
     const [isRecordActive, setIsRecordActive] = useState(false);
-    const [recordingStartTime, setRecordingStartTime] = useState({});
-    const [recordNoteTime, setRecordNoteTime] = useState({});
+    const [recordingStartTime, setRecordingStartTime] = useState(Number);
     const [content, setContent] = useState([]);
     const [title, setTitle] = useState("");
     const [errors, setErrors] = useState([]);
@@ -27,48 +26,44 @@ function PianoTable() {
 
         let currentVolume = e.target.value
         setVolume(currentVolume)
-        // console.log(`zmieniam głośność ${currentVolume}`)
     }
 
     const classRecordToggle = () => {
         setIsRecordActive(prevIsRecordActive => !prevIsRecordActive)
-        // console.log(isRecordActive)
     }
 
-    const handleRecord = (note) => {
+    const handleRecord = () => {
         if (!isRecordActive) {
-            startRecording(note)
+            startRecording()
         } else {
             stopRecording()
         }
     }
 
-    const startRecording = (note) => {
+    const startRecording = () => {
         setRecordingStartTime(Date.now());
-        console.log("zaczynam nagrywać", recordingStartTime, typeof recordingStartTime)
-        recordNote(note)
     }
 
     const recordNote = (note) => {
 
-        setRecordNoteTime(Date.now())
-
         setContent(prevSetContent => [...prevSetContent,
             {
                 key: note,
-                startTime: (recordNoteTime - recordingStartTime)
+                startTime: (Date.now() - recordingStartTime)
             }])
-
-        // console.log(`zapisuję nutkę`, recordNoteTime, typeof recordNoteTime)
     }
 
     const stopRecording = () => {
-        playSong()
+        console.log(content)
         console.log("skończono nagrywać")
     }
 
-    const playSong = () => {
-        console.log(content)
+    const playSong = (arr) => {
+        arr.forEach(note => {
+            setTimeout(() => {
+                playSound()
+            })
+        })
     }
 
     const addNewSong = (newSong) => {
