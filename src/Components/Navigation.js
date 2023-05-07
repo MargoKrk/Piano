@@ -1,66 +1,49 @@
 import React, {useState} from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlay, faPause, faTrashCan } from '@fortawesome/free-solid-svg-icons'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faPlay, faPause, faTrashCan} from '@fortawesome/free-solid-svg-icons'
 import "../scss/navigation.scss"
 import {Slider} from "@mui/material";
-import {songNotesList} from "./general";
+// import {songNotesList} from "./general";
 import supabase from "../config/supabaseClient";
 
-const Navigation = ({ selectSignature, handleVolume, classRecordToggle, handleRecord, isRecordActive, songs, addNewSong }) => {
-    const [title, setTitle] = useState("");
-    const [content, setContent] = useState(songNotesList);
-    const [errors, setErrors] = useState([]);
-    const [selected, setSelected] = useState("Happy Birthday");
+const Navigation = ({
+                        selectSignature,
+                        handleVolume,
+                        classRecordToggle,
+                        handleRecord,
+                        isRecordActive,
+                        songs,
+                        addNewSong,
+                        content,
+                        handleSubmit,
+                        errors,
+                        title,
+                        changeTitle
+                    }) => {
+    const [selected, setSelected] = useState();
     const [isPlayActive, setIsPlayActive] = useState(false)
-    // const [selectedSong, setSelectedSong] = useState({})
+    const [selectedSong, setSelectedSong] = useState({})
 
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        if (!title) {
-            setErrors(["Wprowadź tytuł"])
-            console.log(setErrors)
-            return
-        }
-
-        const {data, error} = await supabase
-            .from('songs')
-            .insert([{title, content}])
-            .select()
-
-            console.log(data, error)
-
-        if (error) {
-            setErrors(["Wprowadź tytuł"])
-            console.log(error)
-        }
-
-        if (data) {
-            console.log(title, content);
-            setTitle("");
-            setContent([]);
-            setErrors([]);
-            addNewSong({title})
-        }
-
-    };
 
     const handleSelect = async (e) => {
 
         const thisSong = e.target.value
 
-        // const { data } = await supabase
-        //     .from('songs')
-        //     .select()
-        //     .eq('title', `${thisSong}`)
-        //
-        // if(data) {
-        //     // setSelectedSong(data)
-        //     console.log(data)
-        // }
+
+        console.log(`handle select`, thisSong, typeof thisSong)
+        const {data} = await supabase
+            .from('songs')
+            .select()
+            .eq('title', thisSong)
+
+        if (data) {
+            setSelectedSong(data)
+            console.log(data)
+        }
 
         setSelected(thisSong);
+        console.log(thisSong)
 
     }
 
@@ -71,32 +54,39 @@ const Navigation = ({ selectSignature, handleVolume, classRecordToggle, handleRe
 
     const handlePlay = async () => {
 
-        const { data, error } = await supabase
+        const {data, error} = await supabase
             .from('songs')
             .select()
             .eq('title', {selected})
 
-        console.log(data)
-        console.log(selected)
+        // console.log(data)
+        // console.log(selected)
 
     }
 
     const handleDelete = async () => {
-        const { data, error } = await supabase
+        console.log(`selected`, selected)
+        console.log(selectedSong)
+
+
+        console.log(`handle delete`, selected, typeof selected)
+
+        const {data, error} = await supabase
             .from('songs')
             .delete()
-            .eq('title', {selected})
+            .eq('title', selected)
 
         console.log(data)
         console.log(selected)
 
-        if(error) {
+        if (error) {
             console.log(error)
         }
 
-        if(data) {
+        if (data) {
             console.log(data)
             console.log(selected)
+            setSelected("Song List")
         }
     }
 
@@ -104,24 +94,26 @@ const Navigation = ({ selectSignature, handleVolume, classRecordToggle, handleRe
         <>
             <div className="navigation">
                 <div className="navigation-header">
-                <select value={selected} onChange={handleSelect}>
-                    {songs.map((song) => (
-                        <option
-                            value={song.title}
-                            key={song.title}>
-                            {song.title}
-                        </option>
-                    ))}
-                </select>
-                    <FontAwesomeIcon icon={faPlay} className={`play ${
-                        isPlayActive ? "hide" : ""
-                    }`} onClick={ () => {
-                        handlePlay();
-                        classPlayToggle()
-                    }}/>
-                    <FontAwesomeIcon icon={faPause} className={`play ${
-                        !isPlayActive ? "hide" : ""
-                    }`} on onClick={classPlayToggle}/>
+                    <select value={selected} onChange={handleSelect}>
+                        {songs.map((song) => (
+                            <option
+                                value={song.title}
+                                key={song.title}>
+                                {song.title}
+                            </option>
+                        ))}
+                    </select>
+                    <FontAwesomeIcon
+                        icon={faPlay}
+                        className={`play ${isPlayActive === true && "hide"}`}
+                        onClick={() => {
+                            handlePlay();
+                            classPlayToggle()
+                        }}/>
+                    <FontAwesomeIcon
+                        icon={faPause}
+                        className={`play ${isPlayActive === false && "hide"}`}
+                        onClick={classPlayToggle}/>
                     <FontAwesomeIcon icon={faTrashCan} className="delete" onClick={handleDelete}/>
                 </div>
                 <div className="switches">
@@ -178,7 +170,7 @@ const Navigation = ({ selectSignature, handleVolume, classRecordToggle, handleRe
                                 handleRecord();
                             }}
                         ></button>
-                        {songNotesList.length > 1 && (
+                        {content.length > 1 && (
                             <form className="save" onSubmit={handleSubmit}>
                                 <span>Save</span>
                                 <input
@@ -186,7 +178,7 @@ const Navigation = ({ selectSignature, handleVolume, classRecordToggle, handleRe
                                     type="text"
                                     placeholder="Tytuł"
                                     value={title}
-                                    onChange={(e) => setTitle(e.target.value)}
+                                    onChange={changeTitle}
                                 />
                                 <button className={`button`}></button>
                                 {errors.map((error, indx) => (

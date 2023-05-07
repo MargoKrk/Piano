@@ -1,11 +1,11 @@
 import React from 'react';
-import {playSound, NOTES, recordNote} from "./general";
+import {playSound, NOTES} from "./general";
 
 const WHITE_NOTES = NOTES.filter((key) => {
     return key.type === "white"
 })
 
-const WhiteKeys = ({ signature, volume, isRecordActive }) => {
+const WhiteKeys = ({ signature, volume, isRecordActive, recordNote }) => {
 
     return (
         <>

@@ -1,12 +1,12 @@
 import React from 'react';
-import { NOTES, playSound, recordNote} from "./general";
+import { NOTES, playSound } from "./general";
 
 const BLACK_NOTES = NOTES.filter((key) => {
     return key.type === "black"
 })
 
 
-const BlackKeys = ({signature, volume, isRecordActive}) => {
+const BlackKeys = ({signature, volume, isRecordActive, recordNote}) => {
 
 
     return (
@@ -18,7 +18,7 @@ const BlackKeys = ({signature, volume, isRecordActive}) => {
                             key={piano_key.key}
                             onMouseDown={() => {
                                 playSound(piano_key.sound, volume)
-                                if(isRecordActive)recordNote(piano_key.sound, true)
+                                if(isRecordActive)recordNote(piano_key.sound)
                             }}>
                             {signature === 'Keys' && piano_key.key}
                             {signature === 'null' && null}

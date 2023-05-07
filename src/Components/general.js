@@ -237,36 +237,8 @@ export const handlePianoKey = (indx, volume) => {
     }
 }
 
-let recordingStartTime
-let recordNoteTime
-export let songNotesList = [];
+// let recordingStartTime
+// let recordNoteTime
+// export let songNotesList = [];
 
-export const startRecording = (note) => {
-    recordingStartTime = Date.now();
-    console.log("zaczynam nagrywać")
-    recordNote(note)
-}
-
-export const recordNote = (note) => {
-
-    recordNoteTime = Date.now()
-
-    songNotesList.push(
-        {
-            key: note,
-            startTime: (recordNoteTime - recordingStartTime)
-        }
-    )
-
-    console.log("zapisuję nutkę")
-}
-
-export const stopRecording = () => {
-    playSong()
-    console.log("skończono nagrywać")
-}
-
-export const playSong = () => {
-    console.log(songNotesList)
-}
 
