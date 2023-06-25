@@ -15,7 +15,7 @@ const WhiteKeys = ({ signature, volume, isRecordActive, recordNote }) => {
             key={piano_key.name}
             onMouseDown={() => {
               playSound(piano_key.sound, volume);
-              if (isRecordActive) recordNote(piano_key.sound);
+              if (isRecordActive) recordNote(piano_key.name);
             }}
           >
             {signature === "C" && piano_key.name}
