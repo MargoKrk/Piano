@@ -3,7 +3,7 @@ import WhiteKeys from "./WhiteKeys";
 import BlackKeys from "./BlackKeys";
 import Navigation from "./Navigation";
 import "../scss/pianoTable.scss";
-import { handlePianoKey, playSound } from "./general";
+import { handlePianoKey } from "./general";
 import supabase from "../config/supabaseClient";
 
 function PianoTable() {
@@ -57,13 +57,13 @@ function PianoTable() {
     console.log("skończono nagrywać");
   };
 
-  const playSong = (arr) => {
-    arr.forEach((note) => {
-      setTimeout(() => {
-        playSound();
-      });
-    });
-  };
+  //   const playSong = (arr) => {
+  //     arr.forEach((note) => {
+  //       setTimeout(() => {
+  //         playSound();
+  //       });
+  //     });
+  //   };
 
   const addNewSong = (newSong) => {
     setSongs((prevSongs) => [...prevSongs, newSong]);

@@ -36,7 +36,7 @@ const Navigation = ({
 
     if (data) {
       setSelectedSong(data);
-      console.log(data);
+      console.log(selectedSong);
     }
 
     setSelected(thisSong);
@@ -163,9 +163,15 @@ const Navigation = ({
               }}
             ></button>
             {stopRecording && content.length > 1 && (
+              // <div className="save">
+              //   <span>Save</span>
+              //   <button className={`button`}></button>
+              //   <span>Reject</span>
+              //   <button className={`button`}></button>
+              // </div>
               <form className="save" onSubmit={handleSubmit}>
                 <span>Save</span>
-                <button className={`button`}></button>
+                <button className={`button`} onClick={() => {}}></button>
                 <input
                   className="title"
                   type="text"
@@ -173,8 +179,6 @@ const Navigation = ({
                   value={title}
                   onChange={changeTitle}
                 />
-                <span>Reject</span>
-                <button className={`button`}></button>
                 {errors.map((error, indx) => (
                   <span
                     key={indx}
