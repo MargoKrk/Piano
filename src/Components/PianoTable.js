@@ -57,14 +57,6 @@ function PianoTable() {
     console.log("skończono nagrywać");
   };
 
-  //   const playSong = (arr) => {
-  //     arr.forEach((note) => {
-  //       setTimeout(() => {
-  //         playSound();
-  //       });
-  //     });
-  //   };
-
   const addNewSong = (newSong) => {
     setSongs((prevSongs) => [...prevSongs, newSong]);
   };
@@ -144,6 +136,7 @@ function PianoTable() {
       <Navigation
         selectSignature={selectSignature}
         handleVolume={handleVolume}
+        volume={volume}
         songs={songs}
         classRecordToggle={classRecordToggle}
         handleRecord={handleRecord}

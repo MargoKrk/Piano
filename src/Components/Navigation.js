@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay, faPause, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import "../scss/navigation.scss";
 import { Slider } from "@mui/material";
 // import {songNotesList} from "./general";
 import supabase from "../config/supabaseClient";
+import { handlePianoKey, playSound, NOTES } from "./general";
 
 const Navigation = ({
   selectSignature,
   handleVolume,
+  volume,
   classRecordToggle,
   handleRecord,
   isRecordActive,
@@ -36,7 +38,7 @@ const Navigation = ({
 
     if (data) {
       setSelectedSong(data);
-      console.log(selectedSong);
+      console.log(data);
     }
 
     setSelected(thisSong);
@@ -57,9 +59,19 @@ const Navigation = ({
     console.log(data[0]);
     console.log(selected);
 
-    const objectToPlay = data[0];
-    const contentToPlay = objectToPlay.content;
-    console.log(contentToPlay);
+    const contentToPlay = [data[0].content];
+    console.log(contentToPlay, typeof contentToPlay);
+
+    contentToPlay.forEach((element) => {
+      element.map((elem) => {
+        const sound = NOTES.find(
+          (note) => note.name === JSON.parse(elem).key
+        ).sound;
+
+        playSound(sound, volume);
+        console.log(elem);
+      });
+    });
   };
 
   const handleDelete = async () => {
@@ -163,31 +175,37 @@ const Navigation = ({
               }}
             ></button>
             {stopRecording && content.length > 1 && (
-              // <div className="save">
-              //   <span>Save</span>
-              //   <button className={`button`}></button>
-              //   <span>Reject</span>
-              //   <button className={`button`}></button>
-              // </div>
-              <form className="save" onSubmit={handleSubmit}>
-                <span>Save</span>
-                <button className={`button`} onClick={() => {}}></button>
-                <input
-                  className="title"
-                  type="text"
-                  placeholder="Tytuł"
-                  value={title}
-                  onChange={changeTitle}
-                />
-                {errors.map((error, indx) => (
-                  <span
-                    key={indx}
-                    style={{ color: "white", position: "absolute", bottom: -5 }}
-                  >
-                    {error}
-                  </span>
-                ))}
-              </form>
+              <>
+                {/* <div className="save">
+                  <span>Save</span>
+                  <button className={`button`}></button>
+                  <span>Reject</span>
+                  <button className={`button`}></button>
+                </div> */}
+                <form className="save" onSubmit={handleSubmit}>
+                  <span>Save</span>
+                  <button className={`button`} onClick={() => {}}></button>
+                  <input
+                    className="title"
+                    type="text"
+                    placeholder="Tytuł"
+                    value={title}
+                    onChange={changeTitle}
+                  />
+                  {errors.map((error, indx) => (
+                    <span
+                      key={indx}
+                      style={{
+                        color: "white",
+                        position: "absolute",
+                        bottom: -5,
+                      }}
+                    >
+                      {error}
+                    </span>
+                  ))}
+                </form>
+              </>
             )}
           </div>
         </div>
