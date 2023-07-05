@@ -67,9 +67,10 @@ const Navigation = ({
         const sound = NOTES.find(
           (note) => note.name === JSON.parse(elem).key
         ).sound;
-
-        playSound(sound, volume);
-        console.log(elem);
+        setTimeout(() => {
+          playSound(sound, volume);
+          console.log(elem);
+        }, JSON.parse(elem).startTime);
       });
     });
   };
