@@ -127,6 +127,12 @@ function PianoTable() {
     }
   };
 
+  const handleReject = async (e) => {
+    e.preventDefault();
+
+    setContent([]);
+  };
+
   const changeTitle = (e) => {
     setTitle(e.target.value);
   };
@@ -150,6 +156,7 @@ function PianoTable() {
         content={content}
         changeTitle={changeTitle}
         reloadSongList={reloadSongList}
+        handleReject={handleReject}
       />
       <div className="whiteKeysLayer">
         <WhiteKeys

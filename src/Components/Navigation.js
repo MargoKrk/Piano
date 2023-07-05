@@ -22,6 +22,7 @@ const Navigation = ({
   title,
   changeTitle,
   reloadSongList,
+  handleReject,
 }) => {
   const [selected, setSelected] = useState();
   const [isPlayActive, setIsPlayActive] = useState(false);
@@ -183,6 +184,8 @@ const Navigation = ({
                   <span>Reject</span>
                   <button className={`button`}></button>
                 </div> */}
+                <span>Reject</span>
+                <button className={`button`} onClick={handleReject}></button>
                 <form className="save" onSubmit={handleSubmit}>
                   <span>Save</span>
                   <button className={`button`} onClick={() => {}}></button>

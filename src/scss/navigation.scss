@@ -28,7 +28,6 @@
       option {
         background: rgba(128, 128, 128, 30%);
       }
-
     }
 
     .svg-inline--fa {
@@ -37,7 +36,13 @@
       width: 4vw;
       height: 2vw;
       border-radius: 0.5vw;
-      background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.34)), to(#e6e6e6));
+      background: -webkit-gradient(
+        linear,
+        left top,
+        left bottom,
+        from(rgba(255, 255, 255, 0.34)),
+        to(#e6e6e6)
+      );
       border-color: #7c7c7c;
       cursor: pointer;
     }
@@ -51,7 +56,13 @@
     }
 
     .delete {
-      background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.34)), to(#e6e6e6));
+      background: -webkit-gradient(
+        linear,
+        left top,
+        left bottom,
+        from(rgba(255, 255, 255, 0.34)),
+        to(#e6e6e6)
+      );
       border-color: #7c7c7c;
       color: black;
 
@@ -59,7 +70,6 @@
         color: rgba(255, 0, 0, 0.68);
       }
     }
-
   }
 
   .switches {
@@ -82,10 +92,15 @@
         height: 3vw;
         border-radius: 50%;
         border-color: #7c7c7c;
-        background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.34)), to(#e6e6e6));
+        background: -webkit-gradient(
+          linear,
+          left top,
+          left bottom,
+          from(rgba(255, 255, 255, 0.34)),
+          to(#e6e6e6)
+        );
         padding: 0;
       }
-
     }
 
     .volume-change {
@@ -107,10 +122,10 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 30%;
+      width: 40%;
 
       span {
-        padding: 0 5px 0 0;
+        padding: 0 2px 0 5px;
       }
 
       .button {
@@ -119,16 +134,25 @@
         height: 3vw;
         border-radius: 50%;
         border-color: #7c7c7c;
-        background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.34)), to(#e6e6e6));
+        background: -webkit-gradient(
+          linear,
+          left top,
+          left bottom,
+          from(rgba(255, 255, 255, 0.34)),
+          to(#e6e6e6)
+        );
       }
 
       .record-button {
         border-color: #7c7c7c;
-        background: linear-gradient(0deg, rgba(255, 27, 0, 1) 0%, rgba(251, 75, 2, 1) 100%);
+        background: linear-gradient(
+          0deg,
+          rgba(255, 27, 0, 1) 0%,
+          rgba(251, 75, 2, 1) 100%
+        );
       }
     }
   }
-
 
   .save {
     display: flex;
@@ -150,6 +174,5 @@
         color: grey;
       }
     }
-
   }
 }
