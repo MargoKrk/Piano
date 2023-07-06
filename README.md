@@ -23,4 +23,4 @@ Technologies:
 - RWD
 - API / supabase
 
-![PianoView](https://margokrk.github.io/Piano/)
+![PianoView](src/image/PianoApp.png)
